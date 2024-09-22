@@ -1,0 +1,51 @@
+defaults:
+  - env: building_block
+  - gflownet: trajectorybalance
+  - policy: mlp_building_block
+  - proxy: sEH # sEH / Aurora_A / drd2
+  - logger: wandb
+  - user: zyc
+  
+env:
+  reward_beta: 4
+  buffer:
+    replay_capacity: 1000
+
+gflownet:
+  optimizer:
+    lr: 1e-4
+    lr_z_mult: 1e-2
+    z_dim: 16
+    batch_size:
+     forward: 64
+    n_train_steps: 5000
+  temperature_logits: 1.5
+  random_action_prob: 0.05
+ 
+policy:
+  policy_1:
+   forward:
+     n_hid: 128
+     n_layers: 2
+  policy_2:
+   forward:
+     n_hid: 512
+     n_layers: 2
+
+# Device
+device: "cpu" # cuda or cpu
+# Float precision
+float_precision: 32
+# Number of objects to sample at the end of training
+n_samples: 100
+# Random seeds
+seed: 0 
+
+# Hydra config
+# Note: For the DRD2 target, the model weights are downloaded from TDC. If users encounter network issues, we provide the pre-downloaded weights, which can be accessed using the provided path.
+hydra:
+  run:
+    dir: ${user.logdir.root}/${now:%Y-%m-%d_%H-%M-%S}
+    #dir: ${user.logdir.root}/drd2   #for drd2 target
+  job:
+    chdir: True

@@ -1,0 +1,9 @@
+defaults:
+  - base
+
+_target_: utils.logger.AL_Logger
+
+project_name: "ActiveLearningPipeline"
+tags: 
+    - dummy1
+    - dummy2

@@ -1,0 +1,30 @@
+policy_1:
+  policy:
+    _target_: gflownet.policy.building_block.Policy
+    shared: null
+    forward:
+      type: policy_1
+      n_hid: 128
+      n_layers: 2
+      checkpoint: "ck_f_1"
+      reload_ckpt: False
+    backward:
+      shared_weights: True
+      checkpoint: "ck_b_1"
+      reload_ckpt: False
+      
+#Please note that the number of hidden layer neurons in the Policy Model 2 varies across different buildingblock libraries. As the size of the buildingblock library increases, the number of hidden layer neurons may also increase
+policy_2:
+  policy:
+    _target_: gflownet.policy.building_block.Policy
+    shared: null
+    forward:
+      type: policy_2
+      n_hid: 512
+      n_layers: 2
+      checkpoint: "ck_f_2"
+      reload_ckpt: False
+    backward:
+      shared_weights: True
+      checkpoint: "ck_b_2"
+      reload_ckpt: False

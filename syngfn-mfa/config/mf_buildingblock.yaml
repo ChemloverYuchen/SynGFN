@@ -1,0 +1,106 @@
+# @package _global_
+
+
+defaults:
+  - env: building_block
+  - oracle@_oracle_dict.1: buildingblock1
+  # Second is better
+  - oracle@_oracle_dict.2: buildingblock2 
+  - gflownet: trajectorybalance
+  - policy: mlp_building_block
+  - user: zyc
+  - proxy: mf_mes_gp
+  - dataset: dataset
+  - regressor: mf_gp
+  - logger: wandb
+
+
+logger:
+  project_name: "syngfn-mfa"
+  lightweight: False
+  ckpts:
+   policy:
+     period: 1000
+   regressor:
+     period: 1
+  test:
+    period: 1000
+    n: 1000
+    first_it: True
+  oracle:
+    period: -1
+  do:
+    times: False
+    online: False
+  tags:
+    - buildingblock
+    - mf
+
+env:
+  proxy_state_format: state
+  reward_func: power
+  reward_beta: 1
+  beta_factor: 0
+  reward_norm: 1
+  norm_factor: 1 
+
+    
+gflownet:
+  active_learning: True
+  random_action_prob: 0.1
+  optimizer:
+    lr: 1e-4
+    lr_z_mult: 1e-2
+    n_train_steps: 1000
+    batch_size:
+        forward: 16
+
+dataset:
+  normalize_data: True
+  split: given
+  train_fraction: 0.8
+  dataloader:
+    train:
+      batch_size: 32
+    test:
+      batch_size: 32
+  path:
+    type: mf
+    oracle_dataset:
+      fid_type: random
+      type: null
+      train: 
+        path: ${user.data_path}/seh/mf/data_train.csv
+        get_scores: False
+      test: 
+        path: ${user.data_path}/seh/mf/data_test.csv
+        get_scores: False
+
+# Number of objects to sample at the end of training
+n_samples: 200
+# Random seeds
+seed: 0
+# Device
+device: "cpu" # cuda
+# Float precision
+float_precision: 32
+#It is strongly recommended to use double precision in BoTorch, as this improves both precision and stability and can help avoid numerical errors. See https://github.com/pytorch/botorch/discussions/1444
+
+al_n_rounds: 5
+do_figure: False
+
+multifidelity:
+  proxy: True
+  fixed_cost: 0
+  rescale: 1
+  fid_embed: one_hot
+  fid_embed_dim: None
+
+budget: 1200
+
+# Hydra config
+hydra:
+  run:
+    dir: ${user.logdir.root}/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: True

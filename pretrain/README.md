@@ -1,0 +1,1 @@
+Please move the pre-trained policy model weights from the dataprocess/pretrain directory to this location. Here, we use the pre-trained model weights for the buildingblock library scale S as an example.

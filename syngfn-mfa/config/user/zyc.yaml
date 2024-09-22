@@ -1,0 +1,3 @@
+logdir:
+  root: /data/LP/lp/syngfn-mfa/logs
+data_path: /data/LP/lp/syngfn-mfa/storage

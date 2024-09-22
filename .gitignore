@@ -1,0 +1,17 @@
+__pycache__/
+.ipynb_checkpoints/
+.idea/
+datasets
+easy_run_1
+old
+*.pyc
+*.pyo
+*.sw*
+sh/
+*.txt
+.vscode/
+external/
+!requirements.txt
+!docs/requirements-docs.txt
+.DS_Store
+docs/_build/

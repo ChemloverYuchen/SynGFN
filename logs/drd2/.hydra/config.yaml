@@ -1,0 +1,137 @@
+env:
+  _target_: gflownet.envs.building_block.BuildingBlock
+  id: building_block
+  min_seq_length: 1
+  max_seq_length: 7
+  reward_func: power
+  reward_min: 1.0e-08
+  reward_beta: 2
+  reward_norm: 1.0
+  reward_norm_std_mult: 0.0
+  proxy_state_format: oracle
+  skip_mask_check: false
+  buffer:
+    replay_capacity: 1000
+    train:
+      path: null
+      type: null
+    test:
+      path: null
+gflownet:
+  _target_: gflownet.gflownet.GFlowNetAgent
+  seed: 0
+  optimizer:
+    loss: trajectorybalance
+    lr: 0.0001
+    lr_decay_period: 1000000
+    lr_decay_gamma: 0.5
+    method: adam
+    early_stopping: 0.0
+    ema_alpha: 0.5
+    adam_beta1: 0.9
+    adam_beta2: 0.999
+    sgd_momentum: 0.9
+    batch_size:
+      forward: 32
+      backward_dataset: 0
+      backward_replay: 0
+    train_to_sample_ratio: 1
+    n_train_steps: 5
+    bootstrap_tau: 0.0
+    clip_grad_norm: 0.0
+    lr_z_mult: 0.01
+    z_dim: 16
+  batch_reward: true
+  mask_invalid_actions: true
+  temperature_logits: 1.5
+  random_action_prob: 0.05
+  pct_offline: 0.0
+  replay_sampling: weighted
+  num_empirical_loss: 200000
+  oracle:
+    'n': 500
+  sample_only: false
+  active_learning: false
+policy:
+  policy_1:
+    policy:
+      _target_: gflownet.policy.building_block.Policy
+      shared: null
+      forward:
+        type: policy_1
+        n_hid: 128
+        n_layers: 2
+        checkpoint: ck_f_1
+        reload_ckpt: false
+      backward:
+        shared_weights: true
+        checkpoint: ck_b_1
+        reload_ckpt: false
+    forward:
+      n_hid: 128
+      n_layers: 2
+  policy_2:
+    policy:
+      _target_: gflownet.policy.building_block.Policy
+      shared: null
+      forward:
+        type: policy_2
+        n_hid: 512
+        n_layers: 2
+        checkpoint: ck_f_2
+        reload_ckpt: false
+      backward:
+        shared_weights: true
+        checkpoint: ck_b_2
+        reload_ckpt: false
+    forward:
+      n_hid: 512
+      n_layers: 2
+proxy:
+  _target_: gflownet.proxy.drd2.drd2
+logger:
+  _target_: gflownet.utils.logger.Logger
+  do:
+    online: false
+    times: false
+  project_name: GFlowNet
+  train:
+    period: 1
+  test:
+    first_it: true
+    period: 100
+    'n': 100
+    kde:
+      bandwidth: 0.1
+      kernel: gaussian
+    n_top_k: 5000
+    top_k: 100
+    top_k_period: -1
+    n_trajs_logprobs: 10
+    logprobs_batch_size: 100
+    max_data_logprobs: 100000.0
+  oracle:
+    period: 100000
+    k:
+    - 1
+    - 10
+    - 100
+  checkpoints:
+    period: 2000
+  logdir:
+    root: ./logs
+    ckpts: ckpts
+    overwrite: true
+  debug: false
+  lightweight: false
+  progress: true
+  context: '0'
+  tags:
+  - gflownet
+user:
+  logdir:
+    root: /data/LP/lp/syngfn/logs
+device: cpu
+float_precision: 32
+n_samples: 100
+seed: 0

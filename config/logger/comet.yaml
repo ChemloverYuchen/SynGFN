@@ -1,0 +1,9 @@
+defaults:
+  - base
+
+do:
+  online: True
+
+project: None
+tags:
+  - gflownet
