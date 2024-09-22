@@ -3,6 +3,7 @@ __pycache__/
 .gitattributes
 venv/
 .ipynb_checkpoints/
+.readthedocs.yaml
 .idea/
 datasets
 easy_run_1
