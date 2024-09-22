@@ -1,4 +1,7 @@
 __pycache__/
+.github/
+.gitattributes
+venv/
 .ipynb_checkpoints/
 .idea/
 datasets
