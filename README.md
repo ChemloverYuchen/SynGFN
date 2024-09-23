@@ -4,7 +4,7 @@ This repository contains the implementation code for our research paper, [SynGFN
 
 
 ## Introduction
-SynGFN features two key ingredients: (1) a hierarchically pre-trained policy network that significantly acceler-ates learning across diverse distributions of desirable molecules in chemical spaces, and (2) a multi-fidelity active learning framework to alleviate the cost of  reward evaluations.
+SynGFN features two key ingredients: (1) a hierarchically pre-trained policy network that significantly accelerates learning across diverse distributions of desirable molecules in chemical spaces, and (2) a multi-fidelity active learning framework to alleviate the cost of  reward evaluations.
 
 ![GUE](figures/syngfn.png)
 
