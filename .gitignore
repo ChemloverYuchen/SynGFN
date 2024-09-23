@@ -1,6 +1,7 @@
 __pycache__/
 .github/
 .gitattributes
+.hydra
 venv/
 .ipynb_checkpoints/
 .readthedocs.yaml
