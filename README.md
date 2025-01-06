@@ -24,7 +24,7 @@ SynGFN requires the reaction template set and the building block library.
 
 The reaction template set we selected mainly come from 58 robust reactions published by [Hartenfeller et al](https://pubs.acs.org/doi/10.1021/ci200379p) and the virtual reaction database published by [Button et al](https://www.nature.com/articles/s42256-019-0067-7), which includes 64 reactions. Solvents, catalysts, and constant reagents are omitted from the Reaction SMARTS. None of the reactions have defined the stereochemistry of the products. The template set is available under [data/template.py](data/template.py).
 
-The Enamine building block library is available upon request at [https://enamine.net/building-blocks/building-blocks-catalog](https://enamine.net/building-blocks/building-blocks-catalog). We used the "Global Stock" released at 2023.07.17. In our work, we further divided the building block library into four different scales, denoted as S (Small), M (Me-dium), L (Large), and XL (Extreme Large). The specific data processing and construction process is available in [dataprocess/README.md](dataprocess/README.md).
+The Enamine building block library is available upon request at [https://enamine.net/building-blocks/building-blocks-catalog](https://enamine.net/building-blocks/building-blocks-catalog). We used the "Global Stock" released at 2023.07.17. In our work, we further divided the building block library into four different scales, denoted as S (Small), M (Medium), L (Large), and XL (Extreme Large). The specific data processing and construction process is available in [dataprocess/README.md](dataprocess/README.md).
 
 ## Main Components
 
