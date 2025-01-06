@@ -1,2 +1,2 @@
 logdir:
-  root: /data/LP/lp/syngfn/logs
+  root: path/to/SynGFN/logs/
