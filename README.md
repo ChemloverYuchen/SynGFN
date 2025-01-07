@@ -52,6 +52,13 @@ Alternatively, you can create a user configuration file in `config/user/<usernam
 python main.py user=<username>
 ```
 
+SynGFN uses [Hydra](https://hydra.cc/docs/intro/) to handle configuration files. The [main.yaml](config/main.yaml) file provides a set of basic adjustable parameters. For different modules, such as env and policy, users can further include additional configurable parameters in main.yaml for unified adjustments.
+
+If you have already completed the model training, we provide a script for sampling only. You just need to replace the two model weight paths in sample.py (e.g., model_weights = torch.load('path/to/SynGFN/logs/xx/ckpts/ck_f_x_0_iterxx.ckpt')), and then you can run
+```bash
+python sample.py user=<username>
+```
+
 For more detailed explanations, please refer to each folder's `README.md` file.
 
 ## Explanation of Results
