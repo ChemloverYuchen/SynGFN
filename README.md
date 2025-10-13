@@ -1,12 +1,10 @@
 # SynGFN
 
-This repository contains the implementation code for our research paper, [SynGFN: Expanding the Frontier of Synthesis-Constrained Chemical Space with Generative Flow-based Molecular Discovery]() 
+This repository contains the implementation code for our research paper, [SynGFN: Expanding the Frontier of Synthesis-Aware Chemical Space with Generative Flow-based Molecular Discovery]() 
 
 ## Introduction
 
 SynGFN features two key ingredients: (1) a hierarchically pre-trained policy network that significantly accelerates learning across diverse distributions of desirable molecules in chemical spaces, and (2) a multi-fidelity active learning framework to alleviate the cost of reward evaluations.
-
-![GUE](figures/syngfn.png)
 
 ## Installation
 
@@ -69,6 +67,14 @@ To better illustrate the generation results of SynGFN, we have included an examp
 If you find the models useful in your research, please cite our paper.
 We have developed our codes based on the [gflownet](https://github.com/alexhernandezgarcia/gflownet) and [mf-al-gfn](https://github.com/nikita-0209/mf-al-gfn). We really appreciate these excellent works!
 
-
 ## Contact
 If you have any question, please feel free to email us (yuchenzhu@zju.edu.cn).
+
+## SpaceGFN: The Next Step in Molecular Design
+
+We are excited to announce that SpaceGFN, an upgraded version of SynGFN, is currently in development.  
+Building on the foundation of SynGFN, SpaceGFN offers significant improvements and new features for *de novo* molecular design and molecular optimization.  
+
+The SpaceGFN framework introduces new operational modes, supports customizable reaction steps, and integrates advanced docking-based scoring systems. We believe these updates will provide researchers and developers with a more powerful and flexible tool for exploring chemical spaces.
+
+Stay tuned! The code and related research articles will be released soon. We encourage you to follow the development and explore the exciting possibilities SpaceGFN offers.
