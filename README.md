@@ -1,6 +1,6 @@
 # SynGFN
 
-This repository contains the implementation code for our research paper, [SynGFN: Expanding the Frontier of Synthesis-Aware Chemical Space with Generative Flow-based Molecular Discovery]() 
+This repository contains the implementation code for our research paper, [SynGFN: learning across chemical space with generative flow-based molecular discovery](https://www.nature.com/articles/s43588-025-00902-w) 
 
 ## Introduction
 
